@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+    .scroll {
+    @apply fixed top-0 z-10 w-full bg-violet-500 shadow-md;
+    }
+    
+    .homeslide ul {
+        @apply absolute bottom-5
+    } 
+
+    .homeslide ul li {
+        @apply border-4 border-slate-400 rounded-[100%] p-[10px] 
+    } 
+    .homeslide ul li button::before{
+        @apply text-sm text-slate-400
+    } 
+  }
+
+  @layer base {
+    body{
+        @apply bg-gray-100
+    }
+  }
+  
