@@ -1,6 +1,9 @@
 import React from 'react'
 import Categories from '../../components/Categories/Categories'
 import Slider from '../../components/Slider/Slider'
+import FlashDeals from '../../components/FlashDeals/FlashDeals'
+import Speciality from '../../components/Speciality/Speciality'
+
 
 function Home() {
   return (
@@ -9,6 +12,9 @@ function Home() {
         <Categories/>
         <Slider/>
       </div>
+      <FlashDeals/>
+      <Speciality/>
+      
     </section>
   )
 }

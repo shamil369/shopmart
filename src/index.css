@@ -18,6 +18,9 @@
     .homeslide ul li button::before{
         @apply text-sm text-slate-400
     } 
+    .slick-prev::before,.slick-next::before {
+        color:#ede9fe
+    }
   }
 
   @layer base {

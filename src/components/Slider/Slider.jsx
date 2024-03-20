@@ -1,5 +1,5 @@
 import React from 'react'
-import SlideCard from '../SlideCard/SlideCard'
+import SlideCard from './SlideCard/SlideCard'
 
 function Slider() {
   return (
