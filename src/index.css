@@ -2,30 +2,127 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer components {
-    .scroll {
+  .scroll {
     @apply fixed top-0 z-10 w-full bg-violet-500 shadow-md;
-    }
-    
-    .homeslide ul {
-        @apply absolute bottom-5
-    } 
-
-    .homeslide ul li {
-        @apply border-4 border-slate-400 rounded-[100%] p-[10px] 
-    } 
-    .homeslide ul li button::before{
-        @apply text-sm text-slate-400
-    } 
-    .slick-prev::before,.slick-next::before {
-        color:#ede9fe
-    }
   }
 
-  @layer base {
-    body{
-        @apply bg-gray-100
+  .small-icon {
+    display: none;
+  }
+
+  .homeslide ul {
+    @apply absolute bottom-5;
+  }
+
+  .middle-img {
+    transition: 0.5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+  }
+
+  .middle-img-background {
+    position: relative;
+    width: 100%;
+    background: white;
+  }
+
+  .image-view {
+    opacity: 1;
+    display: block;
+    transition: 0.5s ease;
+    backface-visibility: hidden;
+  }
+
+  .middle-img-background:hover .image-view {
+    opacity: 1;
+  }
+
+  .middle-img-background:hover .middle-img {
+    opacity: 1;
+  }
+
+  .homeslide ul li {
+    @apply border-4 border-slate-400 rounded-[100%] p-[10px];
+  }
+  .homeslide ul li button::before {
+    @apply text-sm text-slate-400;
+  }
+  .slick-prev::before,
+  .slick-next::before {
+    color: #ede9fe;
+  }
+
+  .hover-underline-animation {
+    display: inline-block;
+    position: relative;
+  }
+
+  .hover-underline-animation::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: #fb923c;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+
+  .hover-underline-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  .pages .active {
+    color: #fb923c;
+  }
+
+  .pages .active::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: #fb923c;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  .wavi {
+    position: relative;
+  }
+
+  .wavi span {
+    position: relative;
+    display: inline-block;
+    font-size: 40px;
+    color: black;
+    text-transform: uppercase;
+    animation: flip 2s infinite;
+    animation-delay: calc(0.2s * var(--i));
+  }
+
+  @keyframes flip {
+    0%,
+    80% {
+      transform: rotateY(360deg);
     }
   }
-  
+}
+
+@layer base {
+  body {
+    @apply bg-gray-200;
+  }
+}

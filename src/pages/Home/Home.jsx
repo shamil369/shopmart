@@ -1,22 +1,22 @@
-import React from 'react'
-import Categories from '../../components/Categories/Categories'
-import Slider from '../../components/Slider/Slider'
-import FlashDeals from '../../components/FlashDeals/FlashDeals'
-import Speciality from '../../components/Speciality/Speciality'
-
+import React from "react";
+import Categories from "../../components/Categories/Categories";
+import Slider from "../../components/Slider/Slider";
+import FlashDeals from "../../components/FlashDeals/FlashDeals";
+import Speciality from "../../components/Speciality/Speciality";
+import Products from "../../components/Products/Products";
 
 function Home() {
   return (
-    <section className='home'>
-      <div className='max-w-full m-auto flex justify-between px-14'>
-        <Categories/>
-        <Slider/>
+    <section className="home">
+      <div className="max-w-full m-auto flex justify-between px-14">
+        <Categories />
+        <Slider />
       </div>
-      <FlashDeals/>
-      <Speciality/>
-      
+      <Products />
+      <FlashDeals />
+      <Speciality />
     </section>
-  )
+  );
 }
 
-export default Home
+export default Home;
