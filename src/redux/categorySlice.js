@@ -6,8 +6,8 @@ import { category } from "../data/data";
 const initialState = {
     categories:category,
     categoriesStatus:STATUS.IDLE,
-    categoryProducts:[],
-    categoryProductsStatus:STATUS.IDLE
+    categorySelection:"All",
+    showCategory:true,
 }
 
 export const fetchAsyncCategories = createAsyncThunk("categories/fetch",async()=>{
@@ -20,6 +20,12 @@ const categorySlice = createSlice({
     name:"category",
     initialState,
     reducers:{
+        setCategorySelection:(state,action)=>{
+            state.categorySelection=action.payload;
+        },
+        toggleShowCategory:(state)=>{
+            state.showCategory=!state.showCategory
+        }
     },
     extraReducers:builder=>{
         builder.addCase(fetchAsyncCategories.pending,(state,action)=>{
@@ -37,4 +43,10 @@ const categorySlice = createSlice({
 
 
 export default categorySlice.reducer
-export const getAllCategories = (state)=>state.category.categories
+export const getAllCategories = (state)=>state.category.categories;
+export const getSelectedCategory = (state)=>state.category.categorySelection;
+export const getShowCategory = (state)=>state.category.showCategory;
+export const {setCategorySelection , toggleShowCategory} = categorySlice.actions 
+
+// categoryProducts:[],
+// categoryProductsStatus:STATUS.IDLE

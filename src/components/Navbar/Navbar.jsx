@@ -6,16 +6,24 @@ import {
   getCartTotal,
 } from "../../redux/cartSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { toggleShowCategory } from "../../redux/categorySlice";
+import NavbarTop from "./NavbarTop/NavbarTop";
+
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState();
   const carts = useSelector(getAllCarts);
   const itemsCount = useSelector(getCartItemsCount);
   const dispatch = useDispatch();
-
+  
   const handleToggleNavbar = () => {
     setIsOpen(!isOpen);
   };
+
+  const handleToggleShowCategory = ()=>{
+    dispatch(toggleShowCategory());
+  }
+
   useEffect(() => {
     dispatch(getCartTotal());
   }, [carts]);
@@ -23,66 +31,14 @@ function Navbar() {
     const search = document.getElementById("search");
     search.classList.toggle("scroll", window.scrollY > 100);
   });
-  const Links = [
-    { name: "Home", link: "/home" },
-    { name: "Wishlist", link: "/home" },
-    { name: "C", link: "/home" },
-  ];
+ 
   return (
     <>
-      <section className="pt-3 bg-white" id="search">
-        <div className="max-w-full m-auto flex justify-between items-center px-3">
-          <div className="">
-            <img
-              className="inline"
-              src="/shopNewLogo.jpg"
-              width="50px"
-              alt="Logo"
-            />
-            <h2 className="inline font-semibold text-3xl">
-              <span className="text-orange-400">
-                SHOP<span className="text-blue-900">CART</span>
-              </span>
-            </h2>
-          </div>
-          <div className="border-2 rounded-lg hidden sm:flex text-lg p-1 md:w-3/5 flex items-center">
-            <i className="fa fa-search mx-1 opacity-50 "></i>
-            <input
-              className=" text-lg p-1  md:w-full outline-none"
-              type="text"
-              placeholder="Search"
-            />
-            <span className="hidden md:inline md:opacity-50 md:text-base">
-              All&nbsp;Category
-            </span>
-          </div>
-          <div className=" flex items-center gap-3">
-            <i className="fa fa-search inline sm:hidden bg-violet-100 rounded-[100%]
-             p-2  w-9 h-9 text-center"
-             ></i>
-            <i className="fa fa-user icon bg-violet-100 rounded-[100%]
-             p-2 w-9 h-9 text-center"
-             ></i>
-            <div>
-              <NavLink to="/cart">
-                <i className="fa fa-shopping-bag bg-violet-100
-                 rounded-[100%] p-2 w-9 h-9 text-center relative"
-                 >
-                  <label className="absolute -top-0.5 -right- rounded-[100%]
-                   bg-orange-400 text-white p-1"
-                  >
-                    {itemsCount}
-                  </label>
-                </i>
-              </NavLink>
-            </div>
-          </div>
-        </div>
-      </section>
+     <NavbarTop itemsCount={itemsCount}/>
 
       <header className=" h-[6vh] bg-white shadow-md p-2">
         <div className=" max-w-full m-auto flex justify-between px-5">
-          <div className="p-1 bg-blue-50 flex justify-between  rounded-md  ">
+          <div onClick={handleToggleShowCategory} className="p-1 bg-blue-50 flex justify-between rounded-md cursor-pointer ">
             <span className="fa fa-th-large me-2 text-lg "></span>
             <h4 className="inline  text-lg">
               Categories <i className="fa fa-chevron-down ms-2"></i>

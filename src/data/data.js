@@ -201,17 +201,18 @@ export const productItems = [
 /*------ data for Categories omponent ---- */
 
 export const category = [
+  { image: "fas fa-stream", name: "All" },
   { image: "fas fa-mobile", name: "smartphones" },
   { image: "fas fa-spray-can", name: "fragrances" },
   { image: "fas fa-allergies", name: "skincare" },
-  { image: "fas fa-mobile", name: "laptops" },
-  { image: "fas fa-mobile", name: "groceries" },
-  { image: "fas fa-mobile", name: "home decoration" },
-  { image: "fas fa-mobile", name: "furniture" },
-  { image: "fas fa-mobile", name: "mens shirts" },
-  { image: "fas fa-mobile", name: "Tops" },
-  { image: "fas fa-mobile", name: "Womens dresses" },
-  { image: "fas fa-mobile", name: "Womens shoes" },
+  { image: "fas fa-laptop", name: "laptops" },
+  { image: "fas fa-shopping-basket", name: "groceries" },
+  { image: "fas fa-gifts", name: "home-decoration" },
+  { image: "fas fa-couch", name: "furniture" },
+  { image: "fas fa-tshirt", name: "mens shirts" },
+  { image: "fas fa-tshirt", name: "Tops" },
+  { image: "fas fa-female", name: "Womens dresses" },
+  { image: "fas fa-shoe-prints", name: "Womens shoes" },
 ];
 
 /*-----banner image and content data ----*/

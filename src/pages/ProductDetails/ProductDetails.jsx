@@ -27,7 +27,7 @@ function ProductDetails() {
         dispatch(setCartMessageOff());
       }, 2000);
     }
-  }, [cartMessageStatus]);
+  }, [cartMessageStatus,id]);
 
   let discountedPrice =
     singleProduct?.price -
@@ -56,7 +56,7 @@ function ProductDetails() {
   return (
     <div className="p-10">
       {cartMessageStatus && <CartMessage />}
-      {singleProduct.title && (
+      {singleProduct.length !==0 && (
         <section class="text-gray-600 body-font overflow-hidden">
           <div class="container px-3 py-5 mx-auto bg-white rounded-lg shadow-3xl">
             <div class="lg:w-4/5 mx-auto flex flex-wrap-reverse ">

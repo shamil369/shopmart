@@ -3,6 +3,7 @@ import React,{useState,useEffect} from 'react'
 import { useDispatch } from "react-redux";
 import { jwtDecode } from "jwt-decode";
 import {Link} from 'react-router-dom'
+import { setUser } from '../../redux/userSlice';
 
 function SignIn() {
   const [emailLogin, setEmailLogin] = useState("");
@@ -10,14 +11,12 @@ function SignIn() {
   const dispatch = useDispatch();
 
   function handleCallbackResponse(response) {
-    console.log("encoded jwt", response.credential);
     var userObject = jwtDecode(response.credential);
-    console.log("decode jwt", userObject);
     const uservalue = {
       name: userObject.name,
       image: userObject.picture,
     };
-    // dispatch(signIn(uservalue));
+     dispatch(setUser(uservalue));
   }
 
   useEffect(() => {
@@ -36,25 +35,25 @@ function SignIn() {
 
 
   return (
-    <div className='h-[70vh] flex justify-center items-center'>
-    <div className=" w-[40%] bg-white shadow-md flex flex-col items-center rounded-md py-5">
+    <div className='h-[80vh] flex justify-center items-center'>
+    <div className=" w-[75%] md:w-[40%] lg:w-[30%] bg-white shadow-lg flex flex-col items-center rounded-md py-5">
       <div className="flex w-[50%] flex-col justify-center items-center text-7xl p-2 ">
         <div>
           <i className="fas fa-users w-40 h-40 rounded-full flex justify-center items-center bg-slate-400"></i>
          </div>
-      <label className="text-center block text-3xl my-2 font-medium">Sign In</label>
+      <label className="text-center block text-3xl my-2 font-medium text-blue-800">Sign In</label>
       </div>
       <div className="flex flex-col w-full items-center">
-        <div className="w-full lg:px-24 ">
-          <label className="block text-lg font-medium">Email address</label>
+        <div className="w-full px-5 relative">
+          <label className="block text-lg font-medium text-blue-800">Email address</label>
           <input
             onChange={(e) => setEmailLogin(e.target.value)}
             className="border-b-2 w-full outline-none p-2 border-b-orange-400 "
             placeholder="Enter Email"
           />
         </div>
-        <div className="w-full lg:px-24 py-1 ">
-          <label className="block text-lg font-medium">Password</label>
+        <div className="w-full px-5 py-1 ">
+          <label className="block text-lg font-medium text-blue-800">Password</label>
           <input
             onChange={(e) => {
               setPasswordLogin(e.target.value);
@@ -63,7 +62,7 @@ function SignIn() {
             placeholder="Enter Password"
           />
         </div>
-        <div className="bg-orange-500 rounded-md px-3 py-2 mt-2">
+        <div className="bg-orange-500 rounded-md px-3 py-2 m-3 text-white font-medium">
           <input type="submit" value="Sign In" />
         </div>
         <div className="">
@@ -72,6 +71,7 @@ function SignIn() {
           </Link>
           |<Link className="text-blue-700">&nbsp;Forgot Password?</Link>
         </div>
+        <hr className='' />
         <div className="g-sign mt-3" id="g-sign"></div>
       </div>
     </div>

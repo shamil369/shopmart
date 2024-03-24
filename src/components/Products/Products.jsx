@@ -8,14 +8,17 @@ import {
   setCartMessageOff,
   setCartMessageOn,
 } from "../../redux/cartSlice";
+import { getSelectedCategory } from "../../redux/categorySlice";
 import CartMessage from "../CartMessage/CartMessage";
 
 function Products() {
     
   const dispatch = useDispatch();
   const products = useSelector(getAllProducts);
+  const selectedCategory = useSelector(getSelectedCategory);
   const cartMessageStatus = useSelector(getCartMessageStatus);
   const navigate = useNavigate();
+  
   useEffect(() => {
     dispatch(fetchAsyncProducts());
   }, []);
@@ -49,17 +52,19 @@ function Products() {
   };
 
   return (
-    <div className="p-5">
+    <div id="products" className="p-5">
       {cartMessageStatus && <CartMessage />}
       <h1 className="text-4xl font-semibold ">Our Products</h1>
       <div className="p-3  grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-wrap">
         {randomProducts.map((product, index) => {
+          
+          if(product.category===selectedCategory || selectedCategory==="All"){
           return (
             <div
               className="box 2xl:p-8 w-64 md:w-96 transition-all duration-400 hover:scale-110"
               key={index}
             >
-              <div className=" bg-white p-5 relative rounded-md shadow-3xl m-2 ">
+              <div className=" bg-white p-5 relative rounded-md shadow-3xl m-2 cursor-pointer ">
                 <div
                   className="img"
                   onMouseDown={() => handleNavigate(product.id)}
@@ -111,6 +116,7 @@ function Products() {
               </div>
             </div>
           );
+          }
         })}
       </div>
     </div>

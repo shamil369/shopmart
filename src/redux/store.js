@@ -3,13 +3,14 @@ import categoryReducer from "./categorySlice";
 import productReducer from "./productSlice";
 import cartReducer from "./cartSlice";
 import wishlistReducer from "./wishlistSlice";
-
+import userReducer from './userSlice'
 const store = configureStore({
   reducer: {
     category: categoryReducer,
     product: productReducer,
     cart: cartReducer,
     wishlist: wishlistReducer,
+    user:userReducer,
   },
 });
 
